@@ -1,9 +1,10 @@
 from App.database import db
+from App.models.job import Job 
 
 class Employer(db.Model):
     
     companyName = db.Column(db.String(100),primary_key=True)
-    postedJobs = db.relationship('Job',backref='employer', lazy=True)     
+    postedJobs = db.relationship("Job",back_populates="employer")     
     
     def __init__(self, companyName):
         self.companyName = companyName 
